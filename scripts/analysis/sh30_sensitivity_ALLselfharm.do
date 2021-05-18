@@ -7,12 +7,14 @@
 * Version History:
 *	Date	Reference	Update
 *	20210312	sensitivity_ALLselfharm	combine all the self-harm sensitivity files into one
+*	20210518	sh30_sensitivit_ALLselfharm	rename log file
+*	20210518	sh30_sensitivit_ALLselfharm	Add analysis with primary care SH in outcome
 *************************************
 
 *** Log
 capture log close allselfharm30
 local date: display %dCYND date("`c(current_date)'", "DMY")
-log using "logs/sh30_sensitivity_agebands_`date'.txt", text append name(allselfharm30)
+log using "logs/sh30_sensitivity_`date'.txt", text append name(allselfharm30)
 *******
 
 frames reset
@@ -407,6 +409,55 @@ include scripts/analysis/sh30_TabulateCounts.do
 
 ***** Run the do-file
 include scripts/analysis/AdjustedSurvival.do
+
+
+
+
+** 6 CHANGE OUTCOME TO INCLUDE PRIMARY CARE SELF-HARM (includes full model spec)
+frames reset
+clear
+macro drop _all
+
+**** MACROS FOR THE MODELS (removed self harm)
+local model i.sex ageindex age2  i.(antipsychotics anxiolytics hypnotics statins substmisuse  pud pancreatitis mentalhealthservices liverdis_mild intellectualdisab insomnia indigestion hypertension diabetes cancer anxiety asthma appetiteloss alcoholmisuse)
+// Also specify the imputed vars to include in regression
+local imputedvars bmi_i i.(smokestat_i alcoholintake_i) 
+
+**** Load imputed dataset
+use data/clean/imputed_sh30_outcome3
+
+**** Drop if prevous primary care or secondary care self harm
+drop if selfharm==1
+drop if bl_intselfharm==1
+
+**** Redefine outcome to include primary care self-harm
+drop newstop
+egen newstop = rowmin(serioussh_int enddate30 SHdate)
+
+drop time
+gen time = newstop - index
+
+drop outcome
+gen outcome=1 if SHdate<=newstop | serioussh_int<=newstop
+replace outcome=2 if deathdate<=newstop & outcome!=1
+replace outcome = 0 if outcome==.
+
+drop if time==0
+
+***** Specify macros
+local stset "stset time, fail(outcome==1) scale(365.25)" // the full stset command
+local regression stcox // type of regression
+local options  // fill in if using stcrreg
+local savetag sh30_sensitivity_PCselfharm
+
+***** Extract counts info
+local countsrowname "Outcome includes primary care self-harm"
+include scripts/analysis/sh30_TabulateCounts.do
+
+***** Run the do-file
+include scripts/analysis/AdjustedSurvival.do
+
+
 
 
 

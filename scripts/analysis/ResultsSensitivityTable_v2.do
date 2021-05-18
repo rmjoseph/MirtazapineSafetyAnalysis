@@ -10,6 +10,7 @@
 *	20201208	ResultsSensitivityTable_v2	Expand to work on results files without interactions too
 *	20210223	ResultsSensitivityTable_v2	Update self-harm info
 *	20210312	ResultsSensitivityTable_v2	Add code for sh30 analysis results
+*	20210518	ResultsSensitivityTable_v2	Add SH analysis including primary care var 
 *************************************
 
 set more off
@@ -441,6 +442,7 @@ TABLE, file(adjsurvival_sh30_sensitivity_max1year) keep(6) anname("Max 1 year fo
 TABLE, file(adjsurvival_sh30_sensitivity_startcital) keep(6) anname("First ad is citalopram")
 TABLE, file(adjsurvival_sh30_sensitivity_switchcital) keep(6) anname("Second ad is citalopram")
 TABLE, file(adjsurvival_sh30_sensitivity_switchfluox) keep(6) anname("Second ad is fluoxetine")
+TABLE, file(adjsurvival_sh30_sensitivity_PCselfharm) keep(6) anname("Outcome includes primary care self-harm")
 
 ** Merge in the info about follow-up
 frame create new
@@ -464,6 +466,7 @@ replace link=10 if analysis=="Max 1 year followup"
 replace link=11 if analysis=="First ad is citalopram"
 replace link=12 if analysis=="Second ad is citalopram"
 replace link=13 if analysis=="Second ad is fluoxetine"
+replace link=14 if analysis=="Outcome includes primary care self-harm"
 drop if analysis=="Use all variables"
 
 frame change default
@@ -481,6 +484,7 @@ replace link=10 if analysis=="Max 1 year followup"
 replace link=11 if analysis=="First ad is citalopram"
 replace link=12 if analysis=="Second ad is citalopram"
 replace link=13 if analysis=="Second ad is fluoxetine"
+replace link=14 if analysis=="Outcome includes primary care self-harm"
 
 frlink m:1 link, frame(new)
 frget obs events totfup, from(new)
