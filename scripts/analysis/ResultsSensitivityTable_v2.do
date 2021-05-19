@@ -11,6 +11,7 @@
 *	20210223	ResultsSensitivityTable_v2	Update self-harm info
 *	20210312	ResultsSensitivityTable_v2	Add code for sh30 analysis results
 *	20210518	ResultsSensitivityTable_v2	Add SH analysis including primary care var 
+*	20210519	ResultsSensitivityTable_v2	Add line for weighted SH analysis with broader outcome
 *************************************
 
 set more off
@@ -442,6 +443,7 @@ TABLE, file(adjsurvival_sh30_sensitivity_max1year) keep(6) anname("Max 1 year fo
 TABLE, file(adjsurvival_sh30_sensitivity_startcital) keep(6) anname("First ad is citalopram")
 TABLE, file(adjsurvival_sh30_sensitivity_switchcital) keep(6) anname("Second ad is citalopram")
 TABLE, file(adjsurvival_sh30_sensitivity_switchfluox) keep(6) anname("Second ad is fluoxetine")
+TABLE, file(iptw_results_sh30_sensitivity_PCselfharm) keep(8) anname("Outcome includes primary care self-harm")
 TABLE, file(adjsurvival_sh30_sensitivity_PCselfharm) keep(6) anname("Outcome includes primary care self-harm")
 
 ** Merge in the info about follow-up
