@@ -8,6 +8,7 @@ The analysis, including the protocol and the Stata code in this repository, was 
 
 We request that any use of or reference to the Stata code within this repository is cited appropriately using the information provided on its Zenodo entry. Additional considerations apply for use of the DrugPrep or SmokingDefinition files (see below).
 
+Read codes and ICD-10 codes are two of the diagnostic coding terminologies used currently/historically in the UK. Information can be found on the NHS Digital TRUD service: https://isd.digital.nhs.uk/trud3/user/guest/group/0/home
 
 ## Using the files
 ### DrugPrep and SmokingDefinition
