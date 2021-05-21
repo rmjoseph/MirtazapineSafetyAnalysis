@@ -7,6 +7,7 @@
 * Version History:
 *	Date	Reference	Update
 *	20210315	New file	Create file
+*	20210520	sh30_survivalcurves	Update plot options (range, yaxis label, line width)
 *************************************
 
 ssc install grstyle, replace
@@ -23,8 +24,9 @@ set scheme s2mono
 grstyle init
 grstyle set plain, horizontal
 
-sts graph, by(cohort) ylabel(.95(.05)1) ytitle("Survival probability") xtitle("Time") tmax(5) name(survival_unadj, replace) title("")
+sts graph, by(cohort) plotopts(lwidth(thin)) ylabel(.5(.05)1) ytitle("Serious self-harm" "Event-free survival probability") xtitle("Time, years") tmax(5) name(survival_unadj, replace) title("")
 
+graph export outputs/SH30_KMplot_unadj.pdf, name(survival_unadj) replace
 
 *******
 frames reset

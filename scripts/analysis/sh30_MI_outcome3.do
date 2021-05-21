@@ -7,6 +7,7 @@
 * Version History:
 *	Date	Reference	Update
 *	20210312	Regression_Outcome3_v2	Create file
+*	20210520	sh30_MI_outcome3	Change dose file to selfharm30
 *************************************
 
 *** Log
@@ -42,7 +43,7 @@ local extravars totMedOn_ssri totMedOn_amitriptyline totMedOn_venlafaxine totMed
 use if keep1==1 & cohort<=4 using data/clean/final_combined.dta
 
 *** Merge in the dose variables
-merge 1:1 patid using "data/clean/avgdose_selfharm.dta" // RMJ 2021-02-23 changed from avgdose_mortality
+merge 1:1 patid using "data/clean/avgdose_selfharm30.dta" 
 // Some patients (those prescribed 3rd antidep on index date) have no avg dose info.
 // This will crash the imputation. Fill in with 0s? Technically true.
 // Can't drop them as needed for the sensititivy analysis ignoring 3rd antidep.
