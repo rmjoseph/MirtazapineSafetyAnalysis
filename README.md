@@ -29,6 +29,7 @@ Stata modules required are:
 - sxpose (ssc install sxpose)
 - grstyle (ssc install grstyle)
 - palettes (ssc install palettes)
+- regsave (ssc install regsave)
 
 ### Data
 The data were provided under licence by the Clinical Practice Research Datalink (CPRD, CPRD GOLD dataset Nov 2019). The database queries used to define primary care data have been provided (Word documents Define_*). The linked data (Hospital Episode Statistics (HES) admitted patient care data, Office for National Statisitics (ONS) mortality data, and deprivation data) were provided directly by CPRD for a subset of patients (the code to define these patients is provided).
