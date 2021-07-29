@@ -13,6 +13,7 @@
 *	20201209	masterfile_analysis	Add self harm sensitivity analyses & baseline charas
 *	20210224	masterfile_analysis	Add the dose scripts
 *	20210224	masterfile_analysis	Separate out the self-harm scripts
+*	20210629	masterfile_analysis	Add additional self harm scripts
 *************************************
 
 ** Working directory must have the following structure:
@@ -166,7 +167,11 @@ do scripts/analysis/sh30_StandardisedRates_v3_sensitivity.do // above with inver
 do scripts/analysis/sh30_sensitivity_ALLselfharm.do // all the self-harm sensitivity regression analyses
 do scripts/analysis/sh30_Regression_allvars_selfharm.do
 
-
+*** Additional analyses
+do scripts/analysis/sh30_cohortcount.do // person counts as applying criteria
+do scripts/analysis/sh30_charasbyinclusion.do // summarises bl charas according to inclusion criteria
+do scripts/analysis/sh30_Regression_SSRIasref_v2.do // main analysis but with SSRI as base group
+do scripts/analysis/sh30_powercalc.do // power calculations
 
 
 
