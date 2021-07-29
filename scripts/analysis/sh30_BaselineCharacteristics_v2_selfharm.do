@@ -7,6 +7,7 @@
 * Version History:
 *	Date	Reference	Update
 *	20210312	BaselineCharacteristics_v2_selfharm	Create file
+*	20210709	BaselineCharacteristics_v2_selfharm	Bug fix: outcome <enddate30 not 6
 *************************************
 
 set more off
@@ -170,8 +171,6 @@ end
 
 
 
-
-
 *** Open data file
 use data/clean/final_combined.dta
 order bipolar schizophrenia depsev , last // lithium removed
@@ -185,7 +184,7 @@ frame put if keep1==1, into(resultsframe)
 frame change resultsframe
 
 **** restrict to self harm dataset
-gen outcome = serioussh_int <= enddate6
+gen outcome = serioussh_int <= enddate30
 gen died = endreason30==1
 replace outcome = 2 if outcome!=1 & died==1
 egen newstop = rowmin(enddate30 serioussh_int)
