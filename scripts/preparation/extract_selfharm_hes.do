@@ -7,6 +7,7 @@
 * Requires: Stata 16 for frames function
 * Version History:
 *	Date	Reference	Update
+*	20210622	extract_selfharm_hes	Bug fix? death_group2->3 and death_group3->4 (!no dif in output)
 *************************************
 
 set more off
@@ -23,9 +24,9 @@ import excel data/codelists/Appendix1_mirtaz_codelists.xlsx, sheet(death_expande
 rename code icd10
 replace all_cause=0 if all_cause==.
 
-gen selfharm = regexm(death_group2,"Intentional self-harm")==1
+gen selfharm = regexm(death_group3,"Intentional self-harm")==1
 keep if selfharm==1
-gen intentionalselfharm=1 if death_group3=="Intentional self-harm"
+gen intentionalselfharm=1 if death_group4=="Intentional self-harm"
 drop death_group* all_cause
 
 
