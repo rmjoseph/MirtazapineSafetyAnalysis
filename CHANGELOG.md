@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
 
+## [1.2.0] (release pending)
+### Added
+- Complete case and complete variable analyses for mortality and self-harm
+- Self-harm sensitivity analysis with broader eligibility criteria
+### Changed
+- Added the new analysis files to the analysis master file
+### Fixed
+
+
 ## [1.1.0] - 2021-07-30
 ### Added
 - Power calculations for self-harm(30)
