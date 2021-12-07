@@ -14,6 +14,8 @@
 *	20210224	masterfile_analysis	Add the dose scripts
 *	20210224	masterfile_analysis	Separate out the self-harm scripts
 *	20210629	masterfile_analysis	Add additional self harm scripts
+*	20211126	masterfile_analysis	Add sensitivity analysis with complete cases scripts
+*	20211201	masterfile_analysis	Add extra SH sensitivity analyses
 *************************************
 
 ** Working directory must have the following structure:
@@ -180,7 +182,14 @@ do scripts/analysis/sh30_powercalc.do // power calculations
 do scripts/analysis/ResultsSensitivityTable_v2.do
 
 
+** 2021-11-26 Complete case analysis (mortality)
+do scripts/analysis/Sensit_CompleteCaseAnalyses.do
+do scripts/analysis/Sensit_CompleteCaseAnalyses_cod.do
+do scripts/analysis/CompCaseOutput.do
 
+** 2021-12-01 Additional sensitivity self-harm
+do scripts/analysis/sh30_Sensit_BroadElig.do
+do scripts/analysis/sh30_Sensit_CompleteCaseAnalysis.do
 
 *~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*
 ** END
