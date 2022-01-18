@@ -5,7 +5,7 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 
 
-## [1.2.0] (release pending)
+## [1.2.0] - 2022-01-18
 ### Added
 - Complete case and complete variable analyses for mortality and self-harm
 - Self-harm sensitivity analysis with broader eligibility criteria
